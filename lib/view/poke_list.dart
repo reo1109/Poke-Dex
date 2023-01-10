@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:poke_dex/view/poke_detail_page.dart';
+import 'package:poke_dex/view/poke_list_item.dart';
 
-class PokeList extends StatelessWidget {
+class PokeList extends StatefulWidget {
   const PokeList({Key? key}) : super(key: key);
 
+  @override
+  State<PokeList> createState() => _PokeListState();
+}
+
+class _PokeListState extends State<PokeList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,40 +20,3 @@ class PokeList extends StatelessWidget {
   }
 }
 
-class PokeListItem extends StatelessWidget {
-  const PokeListItem({Key? key, required this.index}) : super(key: key);
-  final int index;
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      leading: Container(
-        width: 80,
-        decoration: BoxDecoration(
-          color: Colors.yellow.withOpacity(.5),
-          borderRadius: BorderRadius.circular(10),
-          image: const DecorationImage(
-            fit: BoxFit.fitWidth,
-            image: NetworkImage(
-              "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
-            ),
-          ),
-        ),
-      ),
-      title: const Text(
-        'Pikachu',
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-      ),
-      subtitle: const Text(
-        '⚡️electric',
-      ),
-      trailing: const Icon(Icons.navigate_next),
-      onTap: () => {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (BuildContext context) => const PokeDetailPage(),
-          ),
-        ),
-      },
-    );
-  }
-}

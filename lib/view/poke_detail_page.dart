@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class PokeDetailPage extends StatelessWidget {
+class PokeDetailPage extends StatefulWidget {
   const PokeDetailPage({Key? key}) : super(key: key);
 
+  @override
+  State<PokeDetailPage> createState() => _PokeDetailPageState();
+}
+
+class _PokeDetailPageState extends State<PokeDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

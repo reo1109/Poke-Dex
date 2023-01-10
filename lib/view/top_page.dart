@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:poke_dex/view/poke_detail_page.dart';
 import 'package:poke_dex/view/poke_list.dart';
 import 'package:poke_dex/view/setting.dart';
 

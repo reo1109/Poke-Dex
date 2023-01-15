@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:poke_dex/const/colors.dart';
+import 'package:poke_dex/model/favorite.dart';
 import 'package:poke_dex/model/pokemon.dart';
+import 'package:poke_dex/utils/favorite_notifier.dart';
+import 'package:provider/provider.dart';
 
 class PokeDetailPage extends StatelessWidget {
   const PokeDetailPage({Key? key, required this.poke}) : super(key: key);
@@ -8,7 +11,7 @@ class PokeDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Consumer<FavoriteNotifier>(builder: (context, favs, child) => Scaffold(
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -17,6 +20,14 @@ class PokeDetailPage extends StatelessWidget {
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () => Navigator.pop(context),
+              ),
+              trailing: IconButton(
+                icon: favs.isExist(poke.id)
+                    ? const Icon(Icons.star, color: Colors.orangeAccent)
+                    : const Icon(Icons.star_outline),
+                onPressed: () => {
+                  favs.toggle(Favorite(pokeId: poke.id)),
+                },
               ),
             ),
             const Spacer(),
@@ -73,6 +84,6 @@ class PokeDetailPage extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }

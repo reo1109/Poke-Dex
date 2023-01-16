@@ -9,18 +9,18 @@ class FavoriteNotifier extends ChangeNotifier {
     syncDb();
   }
 
-  List<Favorite> get favs => [];
+  List<Favorite> get favs => _favs;
 
-  void toggle(Favorite fav) {
-    if (isExist(fav.pokeId)) {
+  void toggle(Favorite fav){
+    if(isExist(fav.pokeId)) {
       delete(fav.pokeId);
     } else {
       add(fav);
     }
   }
 
-  bool isExist(int id) {
-    if (_favs.indexWhere((fav) => fav.pokeId == id) < 0) {
+  bool isExist(int id){
+    if(_favs.indexWhere((fav) => fav.pokeId == id) < 0) {
       return false;
     }
     return true;
@@ -28,18 +28,19 @@ class FavoriteNotifier extends ChangeNotifier {
 
   void syncDb() {
     FavoritesDb.read().then(
-        (val) => favs
+        (val) => _favs
             ..clear()
             ..addAll(val),
     );
     notifyListeners();
   }
 
-  Future<void> add(Favorite fav) async {
+  void add(Favorite fav) async {
     await FavoritesDb.create(fav);
     syncDb();
   }
-  Future<void> delete(int id) async {
+
+  void delete(int id) async{
     await FavoritesDb.delete(id);
     syncDb();
   }

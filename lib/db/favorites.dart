@@ -16,10 +16,6 @@ class FavoritesDb {
     );
   }
 
-  // ---
-  // CRUD
-  // Updateは不要
-  // ---
   static Future<void> create(Favorite fav) async {
     var db = await openDb();
     await db.insert(

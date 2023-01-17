@@ -6,11 +6,7 @@ class ViewModeBottomSheet extends StatelessWidget {
   final bool favMode;
 
   String mainText(bool fav) {
-    if (fav) {
-      return 'お気に入りのポケモンが表示されています';
-    } else {
-      return 'すべてのポケモンが表示されています';
-    }
+    return '表示設定';
   }
 
   String menuTitle(bool fav) {

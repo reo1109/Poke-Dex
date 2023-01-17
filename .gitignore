@@ -31,7 +31,8 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
-/windows/
+*/windows/
+
 # Symbolication related
 app.*.symbols
 

@@ -27,11 +27,12 @@ class FavoriteNotifier extends ChangeNotifier {
   }
 
   void syncDb() {
-    FavoritesDb.read().then(
-        (val) => _favs
-            ..clear()
-            ..addAll(val),
-    );
+    FavoritesDb.read().then((val) {
+      val.sort((a, b) => a.pokeId.compareTo(b.pokeId));
+      _favs
+        ..clear()
+        ..addAll(val);
+    });
     notifyListeners();
   }
 

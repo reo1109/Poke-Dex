@@ -14,7 +14,7 @@ class TopHeadMenu extends StatelessWidget {
   final Function(bool) changeFavMode;
   final bool isGridMode;
   final Function(bool) changeGridMode;
-//-7360672562458547898
+
   @override
   Widget build(BuildContext context) {
     return Container(

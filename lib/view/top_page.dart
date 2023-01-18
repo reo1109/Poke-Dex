@@ -15,7 +15,10 @@ class _TopPageState extends State<TopPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: currentbnb == 0 ? const PokeList() : const Setting(),
+        child: IndexedStack(
+          index: currentbnb,
+          children: const [PokeList(), Setting()],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentbnb,

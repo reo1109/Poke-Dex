@@ -20,7 +20,8 @@ class _PokeListState extends State<PokeList> {
   static const pageSize = 30;
   int _currentPage = 1;
   bool isFavoriteMode = false;
-  bool isGridMode = true;
+  bool isGridMode = false;
+  bool isShinyMode = false;
 
   int itemCount(int favsCount, int page) {
     int ret = page * pageSize;
@@ -63,16 +64,30 @@ class _PokeListState extends State<PokeList> {
     setState(() => isGridMode = !currentMode);
   }
 
+  void changeShinyMode(bool currentMode) {
+    setState(() => isShinyMode = !currentMode);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<FavoriteNotifier>(builder: (context, favs, child) => Column(
       children: [
-        TopHeadMenu(
-            isFavoriteMode: isFavoriteMode,
-            changeFavMode: changeFavMode,
-            isGridMode: isGridMode,
-            changeGridMode: changeGridMode),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            IconButton(
+                onPressed: () => changeShinyMode(isShinyMode),
+                icon: isShinyMode
+                  ? const Icon(Icons.auto_awesome, color: Colors.yellow)
+                  : const Icon(Icons.auto_awesome_outlined),),
+            TopHeadMenu(
+                isFavoriteMode: isFavoriteMode,
+                changeFavMode: changeFavMode,
+                isGridMode: isGridMode,
+                changeGridMode: changeGridMode,
+            ),
+          ],
+        ),
         Expanded(
           child: Consumer<PokemonsNotifier>(
               builder: (context, pokes, child) {
@@ -108,6 +123,7 @@ class _PokeListState extends State<PokeList> {
                       } else {
                         return PokeGridItem(
                           poke: pokes.byId(itemId(favs.favs, index)),
+                          isShinyMode: isShinyMode,
                         );
                       }
                     },
@@ -130,6 +146,7 @@ class _PokeListState extends State<PokeList> {
                       } else {
                         return PokeListItem(
                           poke: pokes.byId(itemId(favs.favs, index)),
+                          isShinyMode: isShinyMode,
                         );
                       }
                     },

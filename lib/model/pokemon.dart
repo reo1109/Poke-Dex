@@ -2,13 +2,15 @@ class Pokemon {
   final int id;
   final String name;
   final List<String> types;
-  final String imageUrl;
+  final String defaultImageUrl;
+  final String shinyImageUrl;
 
   Pokemon({
     required this.id,
     required this.name,
     required this.types,
-    required this.imageUrl,
+    required this.defaultImageUrl,
+    required this.shinyImageUrl,
   });
 
   factory Pokemon.fromJson(Map<String, dynamic> json) {
@@ -24,7 +26,8 @@ class Pokemon {
       id: json['id'],
       name: json['name'],
       types: typeToList(json['types']),
-      imageUrl: json['sprites']['other']['official-artwork']['front_default'],
+      defaultImageUrl: json['sprites']['other']['official-artwork']['front_default'],
+      shinyImageUrl: json['sprites']['other']['official-artwork']['front_shiny'],
     );
   }
 }

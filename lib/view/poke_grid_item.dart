@@ -5,8 +5,9 @@ import 'package:poke_dex/model/pokemon.dart';
 import 'package:poke_dex/view/poke_detail_page.dart';
 
 class PokeGridItem extends StatelessWidget {
-  const PokeGridItem({Key? key, required this.poke}) : super(key: key);
+  const PokeGridItem({Key? key, required this.poke, required this.isShinyMode}) : super(key: key);
   final Pokemon? poke;
+  final bool isShinyMode;
   @override
   Widget build(BuildContext context) {
     if (poke != null) {
@@ -16,7 +17,7 @@ class PokeGridItem extends StatelessWidget {
             onTap: () => {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (BuildContext context) => PokeDetailPage(poke: poke!),
+                  builder: (BuildContext context) => PokeDetailPage(poke: poke!, isShinyMode: isShinyMode,),
                 ),
               ),
             },
@@ -32,7 +33,7 @@ class PokeGridItem extends StatelessWidget {
                   image: DecorationImage(
                     fit: BoxFit.fitWidth,
                     image: CachedNetworkImageProvider(
-                      poke!.imageUrl,
+                      isShinyMode ? poke!.shinyImageUrl : poke!.defaultImageUrl,
                     ),
                   ),
                 ),

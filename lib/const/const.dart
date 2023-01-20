@@ -1,5 +1,5 @@
 //list
-const int pokeMaxId = 898;
+const int pokeMaxId = 1010;
 //api
 const String pokeApiRoute = "https://pokeapi.co/api/v2/";
 //db

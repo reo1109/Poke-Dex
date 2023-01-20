@@ -7,8 +7,9 @@ import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class PokeDetailPage extends StatelessWidget {
-  const PokeDetailPage({Key? key, required this.poke}) : super(key: key);
+  const PokeDetailPage({Key? key, required this.poke, required this.isShinyMode}) : super(key: key);
   final Pokemon poke;
+  final bool isShinyMode;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +55,7 @@ class PokeDetailPage extends StatelessWidget {
                         child: Hero(
                           tag: poke.name,
                           child: CachedNetworkImage(
-                            imageUrl: poke.imageUrl,
+                            imageUrl: isShinyMode ? poke.shinyImageUrl : poke.defaultImageUrl,
                             placeholder: (context, url) => const Center(
                               child: CircularProgressIndicator(),
                             ),

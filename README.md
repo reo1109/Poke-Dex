@@ -1,17 +1,4 @@
-# poke_dex
+アプリ名: poke_dex
+機能: ポケモンのNo、名前、画像、タイプを見ることができる。お気に入り機能あり。色違いに変更可能。
+使用した技術: flutter
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# poke-dex

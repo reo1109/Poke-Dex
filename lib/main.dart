@@ -44,7 +44,8 @@ class _MyAppState extends State<MyApp> {
       builder: (context, mode, child) => MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          useMaterial3: true,
+          colorSchemeSeed: Colors.blue,
         ),
         darkTheme: ThemeData.dark(),
         themeMode: mode.mode,
